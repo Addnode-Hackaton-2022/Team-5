@@ -20,11 +20,11 @@ Detta skapar ett token med korrekt OAuth scope och du kan nu klona repot genom a
 * Gå igenom pp Agenda.pptx
 * Gå varvet runt och presentera era enligt frågorna ovan.
 * Välj en teamleader för erat team.
-  - Teamleader - <namn här>
+  - Teamleader - Victor Blomberg
 * Välj ett namn för erat team. Detta skall även skrivas på dörren.
-  - Namn - <namn här>
+  - Namn - Pajkastarna
 * Vilken utmaning jobbar ni med?
-  - Namn - <namn här>
+  - Namn - Korrekt strömning från drönare
  
  
  ### Andra uppgiften, deadline dag 2 kl 12:30
