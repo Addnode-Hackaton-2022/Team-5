@@ -3,6 +3,8 @@ import json
 
 
 the_connection = mavutil.mavlink_connection(':5555')
+#To run locally set up a new UDP Output in Rpanion
+#With <your ip>:<free port> eg. 5555
 
 print('running...')
 
