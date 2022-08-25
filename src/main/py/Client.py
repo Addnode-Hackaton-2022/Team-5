@@ -7,12 +7,13 @@ import time
 from threading import Thread
 
 #Telemetry socket
-the_connection = mavutil.mavlink_connection(':8279')
+the_connection = mavutil.mavlink_connection(':8279') #UDP Output port added in rpanion
 
 #Video socket
 sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 sock.bind(("",5400))
 
+#TCP socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(('10.0.2.115', 12788))  # The address of the TCP server listening
 
@@ -79,10 +80,6 @@ def telemetryStream():
 
         buffer.put(localdict)
 
-
-        #telemetry_data = json.dumps(thisdict)
-        #print(data_loaded)
-
 def updateDict(thisdict):
 
     if not buffer.empty():
@@ -97,7 +94,6 @@ def videoStream(thisdict):
 
     thisdict = updateDict(thisdict)
 
-    #Video
     data, addr = sock.recvfrom(4096)
     print("Telemetry: %s" % thisdict)
     print("received message: %s" % data)
@@ -108,8 +104,6 @@ def videoStream(thisdict):
 def mainloop():
 
     print('running...')
-    stop_video_thread = False
-    stop_telemetry_thread = False
     thisdict = {}
     counter = 500
 
@@ -117,7 +111,6 @@ def mainloop():
         try:
             counter = counter - 1
             thisdict = videoStream(thisdict)
-            #telemetryStream()
             if counter < 1:
                 break
 
@@ -133,6 +126,7 @@ def producer(queue):
     print('Producer: Running')
     telemetryStream()
 
+# consumer task
 def consumer(queue):
     print('consumer: Running')
     mainloop()
@@ -146,7 +140,7 @@ producer_thread.start()
 consumer_thread = threading.Thread(target=consumer, args=(buffer,))
 # start the consumer thread
 consumer_thread.start()
-#init_time = the_connection.recv_match(type='ATTITUDE',blocking=True).time_boot_ms
+
 
 
 
@@ -156,12 +150,3 @@ keepRunning = False
 producer_thread.join()
 
 s.close()
-
-
-#print(thisdict)
-
-#print(attitude)
-#print("servo 5: " + str(servo5))
-#print("servo 6: " + str(servo6))
-#print("airspeed: " + str(speed))
-#print("time: " + str(attitude.time_boot_ms - init_time  ))
