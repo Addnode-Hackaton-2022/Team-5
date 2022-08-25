@@ -1,7 +1,7 @@
 # What is this
-The purpose of this project is to get telemetrics from Gpanion together with the video stream.
+The purpose of this project is to get telemetrics from Rpanion together with the video stream.
 The project includes a python script that puts the data together in a combined TCP stream.
-Each UDF package from the video stream is combined with the telemetrics is combined into a single byte array.
+Each UDP package from the video stream is combined with the telemetrics is combined into a single byte array.
 
 Included is also a .NET project which will take the resulting data stream and convert it into one stream of telemetrics and one stream of video.
 
