@@ -42,7 +42,8 @@ Skriptet kombinerar sedan datan med videoströmmen och skickar vidare TCP-paket.
 För att bevisa att det fungerar har vi även utvecklat en mottagare i .NET som kan ta emot strömmen som både består av video och telemetidata.
 
  * Hur långt har ni kommit?
- Vi är klara, men det är inte den lösning vi hade önskat oss allra helst.
+ Vi har inte lyckats genomföra ett lyckat test för att kunna bevisa vår lösning.
+ Annars är vi ganska klara med en lösning som kanske inte var den vi högst önskade.
  
  * Vad är nästa steg?
 Nästa steg är att med hjälp av lösningen kunna ta hand om telemetridatat för att bildstabilisera videon.
